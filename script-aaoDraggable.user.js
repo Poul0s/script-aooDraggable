@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         script-aaoDraggable
 // @namespace    https://github.com/Poul0s/script-aooDraggable
-// @version      2025-02-24.01
+// @version      2025-02-24.02
 // @description  Add possibility to move AAO simply by dragging it
 // @author       Thunlos
 // @match        https://www.operateur112.fr/
@@ -135,11 +135,11 @@
 			if (mutation.type === "childList") {
 				for (let node of mutation.addedNodes) {
 					if (node.classList.contains("lightbox_iframe")) {
-						node.onload = () => {
+						node.addEventListener("load", () => {
 							if (node.src.startsWith(iframeLink)) {
 								setAAOsDraggables(node, node.contentWindow);
 							}
-						}
+						})
 					}
 				}
 			}
