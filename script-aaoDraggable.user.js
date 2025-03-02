@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         script-aaoDraggable
 // @namespace    https://github.com/Poul0s/script-aooDraggable
-// @version      2025-02-24.02
+// @version      2025-03-02.01
 // @description  Add possibility to move AAO simply by dragging it
 // @author       Thunlos
 // @match        https://www.operateur112.fr/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=operateur112.fr
+// @updateURL    https://raw.githubusercontent.com/Poul0s/script-aooDraggable/main/script-aaoDraggable.user.js
+// @downloadURL  https://raw.githubusercontent.com/Poul0s/script-aooDraggable/main/script-aaoDraggable.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -85,6 +87,8 @@
 					let column_nb_select = editContentWindow.document.getElementById("aao_column_number");
 					column_nb_select.value = columnNumber.toString();
 					let category_select = editContentWindow.document.getElementById("aao_category_id");
+					if (category_select === null)
+						category_select = editContentWindow.document.getElementById("aao_aao_category_id");
 					let option = null
 					for (let opt of category_select.options) {
 						if (opt.innerText == categoryName) {
